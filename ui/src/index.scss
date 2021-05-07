@@ -1,0 +1,84 @@
+$primary: #2892d7;
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: #fafafa;
+  font-family: "Helvetica Neue", arial, sans-serif;
+  font-weight: 400;
+  color: #444;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.frame {
+  > h1 {
+    font-weight: 200;
+    font-size: 2.4em;
+    color: $primary;
+    margin-top: 2em;
+  }
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.sensors {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 5vh;
+  column-gap: 5vw;
+  .sensor {
+    border-radius: 15px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+      rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    .body {
+      border-radius: 15px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.85);
+    }
+    .humidity {
+      .value {
+        color: $primary;
+        text-align: center;
+        font-weight: 200;
+        font-size: 4em;
+      }
+    }
+    .last-update {
+      opacity: 0.6;
+      font-size: 0.8em;
+      text-align: center;
+    }
+    .description {
+      text-align: center;
+      font-weight: 200;
+      font-size: 1.4em;
+      text-transform: uppercase;
+    }
+
+    &.drop {
+      background: url("./drop.png") no-repeat center 35%;
+      background-size: 50%;
+    }
+  }
+}
+
+@media (max-width: 960px) {
+  .sensors {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .sensors {
+    grid-template-columns: 1fr;
+  }
+}

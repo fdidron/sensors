@@ -1,5 +1,16 @@
-import { render } from 'preact'
-import { App } from './app'
-import './index.css'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { store, context } from "./store";
+import App from "./app";
+import "./index.scss";
 
-render(<App />, document.getElementById('app')!)
+const Provider = context.Provider;
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider value={store}>
+      <App />
+    </Provider>,
+  </React.StrictMode>,
+  document.getElementById('root')
+)

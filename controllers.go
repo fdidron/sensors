@@ -2,9 +2,10 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/gorilla/mux"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 func respondWithError(w http.ResponseWriter, code int, message string) {
@@ -20,6 +21,10 @@ func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
 }
 
 func fetchSensor(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	if r.Method == http.MethodOptions {
+		return
+	}
 	params := mux.Vars(r)
 	name := params["name"]
 
@@ -29,6 +34,10 @@ func fetchSensor(w http.ResponseWriter, r *http.Request) {
 }
 
 func fetchSensors(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	if r.Method == http.MethodOptions {
+		return
+	}
 	respondWithJSON(w, http.StatusOK, getSensors())
 }
 
