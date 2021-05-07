@@ -14,6 +14,6 @@ CREATE TABLE `readings`(
   `id` INTEGER PRIMARY KEY AUTOINCREMENT,
   `value` VARCHAR(16) NOT NULL,
   `sensor_id` INTEGER NOT NULL,
-  `created_at` DATE DEFAULT (datetime('now','localtime')),
+  `created_at` DATE DEFAULT(datetime('now','localtime')),
   FOREIGN KEY(`sensor_id`) REFERENCES sensors(`id`)
 );
